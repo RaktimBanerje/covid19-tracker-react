@@ -1,0 +1,28 @@
+.confirm-text{
+    color: rgba(255, 47, 58, 1);
+}
+.confirm-border{
+    border-left-color: rgba(255, 47, 58, 1);
+    border-left-width: 4px;
+}
+.active-text{
+    color: #027bfe;
+}
+.active-border{
+    border-left-color: #027bfe;
+    border-left-width: 4px;
+}
+.recovered-text{
+    color: #27a745;
+}
+.recovered-border{
+    border-left-color: #27a745;
+    border-left-width: 4px;
+}
+.deceased-text{
+    color: #717a82;
+}
+.deceased-border{
+    border-left-color: #717a82;
+    border-left-width: 4px;
+}

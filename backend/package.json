@@ -1,0 +1,21 @@
+{
+  "name": "covid19-tracker",
+  "version": "1.0.0",
+  "description": "Covid-19 Tracker API",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "Raktim Banerjee",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "date-fns": "^2.27.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
