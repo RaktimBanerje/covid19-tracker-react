@@ -1,10 +1,12 @@
 import { numberFormatter } from "../services/utils/commonFunctions"
+import LineChart from "./charts/LineChart"
+
 const ReportBox = ({
     title,
     color,
     data
 }) => {
-    const {total, today} = data
+    const {total, today, timeSeriesData} = data
 
     return (
         <div className="col-xl-3 col-md-6 mb-4">
@@ -27,7 +29,7 @@ const ReportBox = ({
                             }                    
                         </div>
                         <div className="col-auto">
-                            <p className="text-muted">Chart</p>
+                           <LineChart data={timeSeriesData} />
                         </div>
                     </div>
                 </div>

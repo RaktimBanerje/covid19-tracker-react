@@ -68,11 +68,9 @@ async function calculateDailyCasesFromTotalCases (data) {
     let prev = 0
 
     for (let [key, value] of Object.entries(data)){
-        if(value === 0)
-            continue
         calcData.push({
             x: format(new Date(key), "yyyy-MM-dd"),
-            y: value - prev
+            y: value === 0 ? value : value - prev
         })
         prev = value            
     }

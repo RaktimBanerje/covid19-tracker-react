@@ -17,6 +17,7 @@ const LineChart = ({
     const options = {
         scales: {
             x: {
+                display: false,
                 type: "time",
                 time: {
                     displayFormats: {
@@ -25,8 +26,9 @@ const LineChart = ({
                 }
             },
             y: {
-                min: 0
-            }
+                display: false,
+                min: 0,
+            },
         }
     }
 

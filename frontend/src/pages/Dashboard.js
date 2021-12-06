@@ -15,13 +15,13 @@ import Card from '../components/Card'
 
 const Datagrid = React.lazy(() => import("../components/Datagrid"))
 
-
 const Dashboard = () => {
 
     const worldometersAllData = useQuery(['worldometers', 'all'], fetchWorldometersAllData)
     const worldometersCountriesData = useQuery(['worldometers', 'countries'], fetchWorldometersCountriesData)
-    const worldHistoricalData = useQuery(["jhucsse", "historical", "all"], fetchHistoricalAllData)
-
+    const worldHistoricalDataFromStart = useQuery(["jhucsse", "historical", "all"], fetchHistoricalAllData)
+    const worldHistoricalDataFrom30Days = useQuery(["jhucsse", "historical", "31"], fetchHistoricalAllData)
+    
     return (
         <React.Fragment>
             <div id="wrapper">                
@@ -35,40 +35,44 @@ const Dashboard = () => {
                             <div className="row">                                                                
                                 {/* Confirm Report */}
                                 <ReportBox 
-                                    title={"Confirm"} 
+                                    title="Confirm" 
                                     color="confirm" 
                                     data={{
                                         total: worldometersAllData?.data?.data.cases,
-                                        today: worldometersAllData?.data?.data.todayCases
+                                        today: worldometersAllData?.data?.data.todayCases,
+                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyCases.slice(1)
                                     }} 
                                 />
                                 
                                 {/* Active Report */}
                                 <ReportBox 
-                                    title={"Active"} 
+                                    title="Active" 
                                     color="active" 
                                     data={{
-                                        total: worldometersAllData?.data?.data.active
+                                        total: worldometersAllData?.data?.data.active,
+                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyActives.slice(1)
                                     }} 
                                 />
 
                                 {/* Recovered Report */}
                                 <ReportBox 
-                                    title={"Recovered"} 
+                                    title="Recovered" 
                                     color="recovered"
                                     data={{
                                         total: worldometersAllData?.data?.data.recovered,
-                                        today: worldometersAllData?.data?.data.todayRecovered
+                                        today: worldometersAllData?.data?.data.todayRecovered,
+                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyRecovered.slice(1)
                                     }} 
                                 />
 
                                 {/* Deceased Report */}
                                 <ReportBox 
-                                    title={"Deceased"} 
+                                    title="Deceased" 
                                     color="deceased"
                                     data={{
                                         total: worldometersAllData?.data?.data.deaths,
-                                        today: worldometersAllData?.data?.data.todayDeaths
+                                        today: worldometersAllData?.data?.data.todayDeaths,
+                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyDeaths.slice(1)
                                     }} 
                                 />
                             </div>                            
@@ -97,13 +101,13 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data && 
+                                            worldHistoricalDataFromStart?.data?.data && 
                                             <Card
                                                 title="Daily New Cases"
                                             >
                                                 <BarChart 
                                                     label="Daily New Cases"
-                                                    data={worldHistoricalData.data.data.dailyCases}
+                                                    data={worldHistoricalDataFromStart.data.data.dailyCases}
                                                     borderColor={["rgba(255, 47, 58, 1)"]}
                                                     backgroundColor={["rgba(255, 47, 58, 1)"]}
                                                     
@@ -116,13 +120,13 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data &&
+                                            worldHistoricalDataFromStart?.data?.data &&
                                             <Card
                                                 title="Daily Deaths"
                                             > 
                                                 <BarChart
                                                     label="Daily Deaths" 
-                                                    data={worldHistoricalData.data.data.dailyDeaths}
+                                                    data={worldHistoricalDataFromStart.data.data.dailyDeaths}
                                                     borderColor={["rgba(113, 122, 130, 1)"]}
                                                     backgroundColor={["rgba(113, 122, 130, 1)"]}
                                                 />
@@ -134,13 +138,13 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data && 
+                                            worldHistoricalDataFromStart?.data?.data && 
                                             <Card
                                                 title="Daily Recovered"
                                             >
                                                 <BarChart
                                                     label="Daily Recovered" 
-                                                    data={worldHistoricalData.data.data.dailyRecovered}
+                                                    data={worldHistoricalDataFromStart.data.data.dailyRecovered}
                                                     borderColor={["rgba(39, 167, 69, 1)"]}
                                                     backgroundColor={["rgba(39, 167, 69, 1)"]}
                                                 />
@@ -152,12 +156,12 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data &&
+                                            worldHistoricalDataFromStart?.data?.data &&
                                             <Card
                                                 title="Active Cases"
                                             > 
                                                 <TotalActive
-                                                    data={worldHistoricalData.data.data.totalActives}
+                                                    data={worldHistoricalDataFromStart.data.data.totalActives}
                                                 />
                                             </Card>
                                         }
@@ -167,13 +171,13 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data &&
+                                            worldHistoricalDataFromStart?.data?.data &&
                                             <Card
                                                 title="Infected vs Recovered"
                                             > 
                                                 <InfectedvsRecovered
-                                                    cases={worldHistoricalData.data.data.totalCases}
-                                                    recovered={worldHistoricalData.data.data.totalRecovered}
+                                                    cases={worldHistoricalDataFromStart.data.data.totalCases}
+                                                    recovered={worldHistoricalDataFromStart.data.data.totalRecovered}
                                                 />
                                             </Card>
                                         }
