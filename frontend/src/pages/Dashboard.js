@@ -11,6 +11,7 @@ import ReportBox from '../components/ReportBox'
 import BarChart from '../components/charts/BarChart'
 import TotalActive from '../components/charts/TotalActive'
 import InfectedvsRecovered from "../components/charts/InfectedvsRecovered"
+import Card from '../components/Card'
 
 const Datagrid = React.lazy(() => import("../components/Datagrid"))
 
@@ -97,13 +98,17 @@ const Dashboard = () => {
                                     <React.Suspense fallback="Loading">
                                         {
                                             worldHistoricalData?.data?.data && 
-                                            <BarChart 
-                                                label="Daily New Cases"
-                                                data={worldHistoricalData.data.data.dailyCases}
-                                                borderColor={["rgba(255, 47, 58, 1)"]}
-                                                backgroundColor={["rgba(255, 47, 58, 1)"]}
-                                                
-                                            />
+                                            <Card
+                                                title="Daily New Cases"
+                                            >
+                                                <BarChart 
+                                                    label="Daily New Cases"
+                                                    data={worldHistoricalData.data.data.dailyCases}
+                                                    borderColor={["rgba(255, 47, 58, 1)"]}
+                                                    backgroundColor={["rgba(255, 47, 58, 1)"]}
+                                                    
+                                                />
+                                            </Card>
                                         }
                                     </React.Suspense>
                                 </div>
@@ -111,13 +116,17 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data && 
-                                            <BarChart
-                                                label="Daily Deaths" 
-                                                data={worldHistoricalData.data.data.dailyDeaths}
-                                                borderColor={["rgba(113, 122, 130, 1)"]}
-                                                backgroundColor={["rgba(113, 122, 130, 1)"]}
-                                            />
+                                            worldHistoricalData?.data?.data &&
+                                            <Card
+                                                title="Daily Deaths"
+                                            > 
+                                                <BarChart
+                                                    label="Daily Deaths" 
+                                                    data={worldHistoricalData.data.data.dailyDeaths}
+                                                    borderColor={["rgba(113, 122, 130, 1)"]}
+                                                    backgroundColor={["rgba(113, 122, 130, 1)"]}
+                                                />
+                                            </Card>
                                         }
                                     </React.Suspense>
                                 </div>
@@ -126,12 +135,16 @@ const Dashboard = () => {
                                     <React.Suspense fallback="Loading">
                                         {
                                             worldHistoricalData?.data?.data && 
-                                            <BarChart
-                                                label="Daily Recovered" 
-                                                data={worldHistoricalData.data.data.dailyRecovered}
-                                                borderColor={["rgba(39, 167, 69, 1)"]}
-                                                backgroundColor={["rgba(39, 167, 69, 1)"]}
-                                            />
+                                            <Card
+                                                title="Daily Recovered"
+                                            >
+                                                <BarChart
+                                                    label="Daily Recovered" 
+                                                    data={worldHistoricalData.data.data.dailyRecovered}
+                                                    borderColor={["rgba(39, 167, 69, 1)"]}
+                                                    backgroundColor={["rgba(39, 167, 69, 1)"]}
+                                                />
+                                            </Card>
                                         }
                                     </React.Suspense>
                                 </div>
@@ -139,10 +152,14 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data && 
-                                            <TotalActive
-                                                data={worldHistoricalData.data.data.totalActives}
-                                            />
+                                            worldHistoricalData?.data?.data &&
+                                            <Card
+                                                title="Active Cases"
+                                            > 
+                                                <TotalActive
+                                                    data={worldHistoricalData.data.data.totalActives}
+                                                />
+                                            </Card>
                                         }
                                     </React.Suspense>
                                 </div>
@@ -150,11 +167,15 @@ const Dashboard = () => {
                                 <div className="col-xl-6 col-lg-7">
                                     <React.Suspense fallback="Loading">
                                         {
-                                            worldHistoricalData?.data?.data && 
-                                            <InfectedvsRecovered
-                                                cases={worldHistoricalData.data.data.totalCases}
-                                                recovered={worldHistoricalData.data.data.totalRecovered}
-                                            />
+                                            worldHistoricalData?.data?.data &&
+                                            <Card
+                                                title="Infected vs Recovered"
+                                            > 
+                                                <InfectedvsRecovered
+                                                    cases={worldHistoricalData.data.data.totalCases}
+                                                    recovered={worldHistoricalData.data.data.totalRecovered}
+                                                />
+                                            </Card>
                                         }
                                     </React.Suspense>
                                 </div>

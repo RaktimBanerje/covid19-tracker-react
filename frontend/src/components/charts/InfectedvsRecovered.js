@@ -7,11 +7,13 @@ const InfectedvsRecovered = ({cases:newCase, recovered:newRecovered}) => {
     const data = {
         datasets: [
             {
+                label: "Infected",
                 data: newCase,
                 borderColor: ["rgba(255, 47, 58, 1)"],
                 backgroundColor: ["rgba(255, 47, 58, 1)"]
             },
             {
+                label: "Recovered",
                 data: newRecovered,
                 borderColor: ["rgba(39, 167, 69, 1)"],
                 backgroundColor: ["rgba(39, 167, 69, 1)"]

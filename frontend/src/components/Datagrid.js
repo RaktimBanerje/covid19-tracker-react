@@ -78,7 +78,7 @@ const Datagrid = ({columns:COLUMNS, data:DATA}) => {
                                     <th {...column.getHeaderProps(column.getSortByToggleProps())} className="th">
                                         {column.render("Header")}
                                         {
-                                            column.isSorted? column.isSortedDesc? "D" : "A" : null
+                                            column.isSorted? column.isSortedDesc? "  ▼" : "  ▲" : null
                                         }
                                     </th>
                                     ))}
