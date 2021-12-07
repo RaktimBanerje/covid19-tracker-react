@@ -2,19 +2,32 @@ import { Line } from "react-chartjs-2"
 import Chart from "chart.js/auto"
 
 const LineChart = ({
-    data: timeSeriesData
+    data: timeSeriesData,
+    borderColor,
+    backgroundColor,
+    pointRadius
 }) => {
 
     const data = {
         datasets: [
             {
-                label: "",
-                data: timeSeriesData
+                data: timeSeriesData,
+                borderColor,
+                backgroundColor,
+                pointRadius
             }
         ]
     }
 
     const options = {
+        plugins: {
+          legend: {
+              display: false
+          },
+          tooltip: {
+              enabled: false
+          }
+        },
         scales: {
             x: {
                 display: false,

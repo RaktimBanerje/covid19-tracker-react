@@ -40,8 +40,13 @@ const Dashboard = () => {
                                     data={{
                                         total: worldometersAllData?.data?.data.cases,
                                         today: worldometersAllData?.data?.data.todayCases,
-                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyCases.slice(1)
                                     }} 
+                                    graph={{
+                                        data: worldHistoricalDataFrom30Days?.data?.data.dailyCases.slice(1),
+                                        borderColor: ["rgba(255, 47, 58, 1)"],
+                                        backgroundColor: ["rgba(255, 47, 58, 1)"],
+                                        pointRadius: [...Array(30)].map((_, index) => index === 29 ? 8 : 0)
+                                    }}
                                 />
                                 
                                 {/* Active Report */}
@@ -50,7 +55,12 @@ const Dashboard = () => {
                                     color="active" 
                                     data={{
                                         total: worldometersAllData?.data?.data.active,
-                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyActives.slice(1)
+                                    }}
+                                    graph={{
+                                        data: worldHistoricalDataFrom30Days?.data?.data.totalActives.slice(1),
+                                        borderColor: ["rgb(23, 128, 216)"],
+                                        backgroundColor: ["rgb(23, 128, 216)"],
+                                        pointRadius: [...Array(30)].map((_, index) => index === 29 ? 8 : 0)
                                     }} 
                                 />
 
@@ -61,7 +71,12 @@ const Dashboard = () => {
                                     data={{
                                         total: worldometersAllData?.data?.data.recovered,
                                         today: worldometersAllData?.data?.data.todayRecovered,
-                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyRecovered.slice(1)
+                                    }}
+                                    graph={{
+                                        data: worldHistoricalDataFrom30Days?.data?.data.dailyRecovered.slice(1),
+                                        borderColor: ["rgba(39, 167, 69, 1)"],
+                                        backgroundColor: ["rgba(39, 167, 69, 1)"],
+                                        pointRadius: [...Array(30)].map((_, index) => index === 29 ? 8 : 0)
                                     }} 
                                 />
 
@@ -72,7 +87,12 @@ const Dashboard = () => {
                                     data={{
                                         total: worldometersAllData?.data?.data.deaths,
                                         today: worldometersAllData?.data?.data.todayDeaths,
-                                        timeSeriesData: worldHistoricalDataFrom30Days?.data?.data.dailyDeaths.slice(1)
+                                    }}
+                                    graph={{
+                                        data: worldHistoricalDataFrom30Days?.data?.data.dailyDeaths.slice(1),
+                                        borderColor: ["rgba(113, 122, 130, 1)"],
+                                        backgroundColor: ["rgba(113, 122, 130, 1)"],
+                                        pointRadius: [...Array(30)].map((_, index) => index === 29 ? 8 : 0)
                                     }} 
                                 />
                             </div>                            
@@ -93,7 +113,7 @@ const Dashboard = () => {
                                 </div>
                                 
                                 <div className="col-xl-4 col-lg-5">
-                                    {/* <Datagrid />                         */}
+                                    {/* <Datagrid /> */}
                                 </div>
                             </div>
 
