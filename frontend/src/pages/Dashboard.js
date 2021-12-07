@@ -12,6 +12,7 @@ import BarChart from '../components/charts/BarChart'
 import TotalActive from '../components/charts/TotalActive'
 import InfectedvsRecovered from "../components/charts/InfectedvsRecovered"
 import Card from '../components/Card'
+import Map from '../components/Map'
 
 const Datagrid = React.lazy(() => import("../components/Datagrid"))
 
@@ -113,7 +114,12 @@ const Dashboard = () => {
                                 </div>
                                 
                                 <div className="col-xl-4 col-lg-5">
-                                    {/* <Datagrid /> */}
+                                {                                    
+                                    worldometersCountriesData?.data?.data ? 
+                                        <Map data={worldometersCountriesData.data.data}/>
+                                    :
+                                    "Loading..."   
+                                }
                                 </div>
                             </div>
 
