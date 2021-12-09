@@ -1,4 +1,4 @@
-import { numberFormatter } from "../services/utils/commonFunctions"
+import { numberFormatter } from "../services/util"
 import LineChart from "./charts/LineChart"
 
 const ReportBox = ({

@@ -1,6 +1,6 @@
 import { 
     numberFormatter
-} from "../services/utils/commonFunctions"
+} from "../services/util"
 
 const columns = [
     {

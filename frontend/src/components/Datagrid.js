@@ -34,6 +34,8 @@ const Datagrid = ({columns:COLUMNS, data:DATA}) => {
             useSortBy,
         )
     
+    const onHover = e => console.log(e)
+    
     const { globalFilter } = state 
     
     const RenderRow = React.useCallback(({ index, style }) => {

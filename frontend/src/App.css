@@ -1,29 +1,35 @@
+:root{
+  --cases-color:     rgba(255, 47, 58, 1);
+  --recovered-color: rgba(39, 167, 69, 1);
+  --active-color:    rgba(2, 123, 254, 1);
+  --deaths-color:    rgba(113, 122, 130, 1);     
+}
 .confirm-text{
-    color: rgba(255, 47, 58, 1);
+    color: var(--cases-color);
 }
 .confirm-border{
-    border-left-color: rgba(255, 47, 58, 1);
+    border-left-color: var(--cases-color);
     border-left-width: 4px;
 }
 .active-text{
-    color: #027bfe;
+    color: rgba(2, 123, 254, 1);
 }
 .active-border{
-    border-left-color: #027bfe;
+    border-left-color: rgba(2, 123, 254, 1);
     border-left-width: 4px;
 }
 .recovered-text{
-    color: #27a745;
+    color: rgba(39, 167, 69, 1);
 }
 .recovered-border{
-    border-left-color: #27a745;
+    border-left-color: rgba(39, 167, 69, 1);
     border-left-width: 4px;
 }
 .deceased-text{
-    color: #717a82;
+    color: rgba(113, 122, 130, 1);
 }
 .deceased-border{
-    border-left-color: #717a82;
+    border-left-color: rgba(113, 122, 130, 1);
     border-left-width: 4px;
 }
 .map {
@@ -41,6 +47,7 @@
 }
 
 .info-name {
+  margin-top: 8px;
   font-size: 20px;
   font-weight: bold;
   color: #555;
@@ -51,7 +58,7 @@
 }
 
 .info-flag {
-  height: 80px;
+  height: 100px;
   width: 100%;
   background-size: cover;
   border-radius: 8px;
