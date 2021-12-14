@@ -1,7 +1,8 @@
+import React from "react"
 import { numberFormatter } from "../services/util"
-import LineChart from "./charts/LineChart"
+const   LineChart   =   React.lazy(()=>  import("./charts/LineChart"))
 
-const ReportBox = ({
+const InfoBox = ({
     title,
     color,
     data,
@@ -37,8 +38,12 @@ const ReportBox = ({
                                 </div>
                             </div>             
                         </div>
+                    </div>
+                    <div className="row no-gutters align-items-center justify-content-center">
                         <div className="col-auto mt-4">
-                           <LineChart {...graph} />
+                            <React.Suspense fallback="Loading...">
+                                <LineChart {...graph} />
+                            </React.Suspense>
                         </div>
                     </div>
                 </div>
@@ -47,4 +52,4 @@ const ReportBox = ({
     )
 }
 
-export default ReportBox
+export default InfoBox

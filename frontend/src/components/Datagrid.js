@@ -56,7 +56,7 @@ const Datagrid = ({columns:COLUMNS, data:DATA}) => {
         <div className="card shadow mb-4">
             <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 className="m-0 font-weight-bold text-primary">Covid-19 Data</h6>
-                <div class="row align-items-center d-none d-sm-block">
+                <div class="row align-items-center">
                     <div class="input-group">
                         <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search..." value={globalFilter} onChange={e=>setGlobalFilter(e.target.value)} id="example-search-input" />
                         <span class="input-group-append">

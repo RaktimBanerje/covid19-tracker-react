@@ -4,7 +4,7 @@
   "description": "Covid-19 Tracker API",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "Raktim Banerjee",
   "license": "ISC",

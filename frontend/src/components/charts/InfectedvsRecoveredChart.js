@@ -1,8 +1,9 @@
 import { Line } from "react-chartjs-2"
 import Chart from "chart.js/auto"
 import "chartjs-adapter-date-fns"
+import { abbreviateNumber } from "../../services/util"
 
-const InfectedvsRecovered = ({cases:newCase, recovered:newRecovered}) => {
+const InfectedvsRecoveredChart = ({cases:newCase, recovered:newRecovered}) => {
 
     const data = {
         datasets: [
@@ -23,6 +24,7 @@ const InfectedvsRecovered = ({cases:newCase, recovered:newRecovered}) => {
 
     const options = {
         label: "Newly Infected vs Newly Recovered",
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: "time",
@@ -33,7 +35,11 @@ const InfectedvsRecovered = ({cases:newCase, recovered:newRecovered}) => {
                 }
             }, 
             y: {
-                min: 0
+                min: 0,
+                ticks: {
+                    beginAtZero: true,
+                    callback: value => abbreviateNumber(value)
+                }
             }
         }
     }
@@ -41,4 +47,4 @@ const InfectedvsRecovered = ({cases:newCase, recovered:newRecovered}) => {
     return <Line data={data} options={options} />
 }
 
-export default InfectedvsRecovered
+export default InfectedvsRecoveredChart

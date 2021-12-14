@@ -1,6 +1,7 @@
 import { Bar } from "react-chartjs-2"
 import Chart from "chart.js/auto"
 import "chartjs-adapter-date-fns"
+import { abbreviateNumber } from "../../services/util"
 
 const BarChart = ({
     label,
@@ -21,6 +22,7 @@ const BarChart = ({
     }
 
     const options = {
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: "time",
@@ -32,6 +34,10 @@ const BarChart = ({
             }, 
             y: {
                 min: 0,
+                ticks: {
+                    beginAtZero: true,
+                    callback: value => abbreviateNumber(value)
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ const Card = ({
             </div>
             
             <div className="card-body">
-                <div className="pt-4 pb-2">
+                <div className="pt-4 pb-2" style={{height: "400px"}}>
                     {children}
                 </div>
             </div>            

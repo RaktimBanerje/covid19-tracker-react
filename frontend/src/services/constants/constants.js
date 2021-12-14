@@ -6,8 +6,8 @@ export const caseTypeColor = {
 }
 
 export const caseTypeMultiplier = {
-    cases       : 800,
-    recovered   : 1200,
-    deaths      : 2000,
-    active      : 2600
+    cases       : 4000,
+    recovered   : 4000,
+    deaths      : 4000,
+    active      : 4000
 }

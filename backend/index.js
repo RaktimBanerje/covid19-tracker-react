@@ -1,11 +1,18 @@
 require("dotenv").config()
 const express = require("express")
+const path = require("path")
 const axios = require("axios")
 const cors = require("cors")
 const {format} = require("date-fns")
 const app = express()
 
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get("*", (_req, res) => {
+    res.sendFile(path.join(__dirname, "build"), "index.html")
+})
 
 app.get("/api/v1/covid-19/all", async (req, res) => {
     const {data} = await axios.get("https://disease.sh/v3/covid-19/all")

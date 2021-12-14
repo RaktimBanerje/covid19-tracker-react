@@ -47,7 +47,7 @@ const Map = ({data}) => {
         <div className="card shadow mb-4">
         <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 className="m-0 font-weight-bold text-primary">Map</h6>
-            <div class="row align-items-center d-none d-sm-block">
+            <div class="row align-items-center">
                 <div className="form-group">
                     <select className="form-control" value={caseType} onChange={e => setCaseType(e.target.value)}>
                         <option value="cases">Cases</option>

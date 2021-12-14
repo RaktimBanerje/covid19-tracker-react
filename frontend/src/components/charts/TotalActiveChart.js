@@ -1,8 +1,9 @@
 import { Line } from "react-chartjs-2"
 import Chart from "chart.js/auto"
 import "chartjs-adapter-date-fns"
+import { abbreviateNumber } from "../../services/util"
 
-const TotalActive = ({data:timeSeriesData}) => {
+const TotalActiveChart = ({data:timeSeriesData}) => {
 
     const data = {
         datasets: [
@@ -16,6 +17,7 @@ const TotalActive = ({data:timeSeriesData}) => {
     }
 
     const options = {
+        maintainAspectRatio: false,
         scales: {
             x: {
                 type: "time",
@@ -26,7 +28,11 @@ const TotalActive = ({data:timeSeriesData}) => {
                 }
             }, 
             y: {
-                min: 0
+                min: 0,
+                ticks: {
+                    beginAtZero: true,
+                    callback: value => abbreviateNumber(value)
+                }
             }
         }
     }
@@ -34,4 +40,4 @@ const TotalActive = ({data:timeSeriesData}) => {
     return <Line data={data} options={options} />
 }
 
-export default TotalActive
+export default TotalActiveChart

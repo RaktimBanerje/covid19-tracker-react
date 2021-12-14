@@ -20,6 +20,7 @@ const LineChart = ({
     }
 
     const options = {
+        maintainAspectRatio: false,
         plugins: {
           legend: {
               display: false
@@ -40,7 +41,6 @@ const LineChart = ({
             },
             y: {
                 display: false,
-                min: 0,
             },
         }
     }

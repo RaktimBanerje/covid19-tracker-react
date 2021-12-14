@@ -7,14 +7,14 @@ import {
 } from '../services/api/disease'
 import columns from '../components/Columns'
 import Navbar from '../components/Navbar'
-import ReportBox from '../components/ReportBox'
-import BarChart from '../components/charts/BarChart'
-import TotalActive from '../components/charts/TotalActive'
-import InfectedvsRecovered from "../components/charts/InfectedvsRecovered"
+import InfoBox from '../components/InfoBox'
+import TotalActiveChart from '../components/charts/TotalActiveChart'
 import Card from '../components/Card'
-import Map from '../components/Map'
 
-const Datagrid = React.lazy(() => import("../components/Datagrid"))
+const   Datagrid                    =   React.lazy(()   =>  import("../components/Datagrid"))
+const   Map                         =   React.lazy(()   =>  import("../components/Map"))
+const   InfectedvsRecoveredChart    =   React.lazy(()   =>  import("../components/charts/InfectedvsRecoveredChart"))
+const   BarChart                    =   React.lazy(()   =>  import("../components/charts/BarChart"))
 
 const Dashboard = () => {
 
@@ -31,11 +31,11 @@ const Dashboard = () => {
 
                         <Navbar />      
                                           
-                        <div className="container-fluid">
+                        <div className="container-fluid px-2 px-md-4">
 
                             <div className="row">                                                                
                                 {/* Confirm Report */}
-                                <ReportBox 
+                                <InfoBox 
                                     title="Confirm" 
                                     color="confirm" 
                                     data={{
@@ -51,7 +51,7 @@ const Dashboard = () => {
                                 />
                                 
                                 {/* Active Report */}
-                                <ReportBox 
+                                <InfoBox 
                                     title="Active" 
                                     color="active" 
                                     data={{
@@ -66,7 +66,7 @@ const Dashboard = () => {
                                 />
 
                                 {/* Recovered Report */}
-                                <ReportBox 
+                                <InfoBox 
                                     title="Recovered" 
                                     color="recovered"
                                     data={{
@@ -82,7 +82,7 @@ const Dashboard = () => {
                                 />
 
                                 {/* Deceased Report */}
-                                <ReportBox 
+                                <InfoBox 
                                     title="Deceased" 
                                     color="deceased"
                                     data={{
@@ -114,12 +114,14 @@ const Dashboard = () => {
                                 </div>
                                 
                                 <div className="col-xl-4 col-lg-5">
-                                {                                    
-                                    worldometersCountriesData?.data?.data ? 
-                                        <Map data={worldometersCountriesData.data.data}/>
-                                    :
-                                    "Loading..."   
-                                }
+                                    <React.Suspense fallback={"Loading..."}>
+                                        {
+                                            worldometersCountriesData?.data?.data ? 
+                                                <Map data={worldometersCountriesData.data.data}/>
+                                            :
+                                            "Loading..."   
+                                        }
+                                    </React.Suspense>
                                 </div>
                             </div>
 
@@ -186,7 +188,7 @@ const Dashboard = () => {
                                             <Card
                                                 title="Active Cases"
                                             > 
-                                                <TotalActive
+                                                <TotalActiveChart
                                                     data={worldHistoricalDataFromStart.data.data.totalActives}
                                                 />
                                             </Card>
@@ -201,7 +203,7 @@ const Dashboard = () => {
                                             <Card
                                                 title="Infected vs Recovered"
                                             > 
-                                                <InfectedvsRecovered
+                                                <InfectedvsRecoveredChart
                                                     cases={worldHistoricalDataFromStart.data.data.totalCases}
                                                     recovered={worldHistoricalDataFromStart.data.data.totalRecovered}
                                                 />
@@ -223,9 +225,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
-// STACKOVERFLOW NUMBER FORMATTER IN JAVA-SCRIPT
-// https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
-
-// COVID-19-REACT GITHUB REPO 
-// https://github.com/covid19india/covid19india-react/blob/master/src/utils/commonFunctions.js

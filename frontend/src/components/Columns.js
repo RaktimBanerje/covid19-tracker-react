@@ -6,37 +6,42 @@ const columns = [
     {
         Header: "Country",
         accessor: "country",
-        sticky: "left"
     },
     {
-        Header: "Cases",
+        Header: "New Cases",
         accessor: "todayCases",
-        Cell: ({row}) => (
-            <div>
-                <span className="d-block font-weight-bold confirm-text"> {row.original.todayCases > 0 && `+ ${numberFormatter.format(row.original.todayCases)}`}</span>
-                <span className="d-block">{numberFormatter.format(row.original.cases)}</span>
-            </div>
+        Cell: ({value}) => (
+                <span className="d-block font-weight-bold confirm-text">{value > 0 && "+ "} {numberFormatter.format(value)}</span>
         ) 
     },
     {
-        Header: "Recovered",
+        Header: "New Recovered",
         accessor: "todayRecovered",
-        Cell: ({row}) => (
-            <div>
-                <span className="d-block font-weight-bold recovered-text"> {row.original.todayRecovered > 0 && `+ ${numberFormatter.format(row.original.todayRecovered)}`}</span>
-                <span className="d-block">{numberFormatter.format(row.original.recovered)}</span>
-            </div>
+        Cell: ({value}) => (
+                <span className="d-block font-weight-bold recovered-text">{value > 0 && "+ "} {numberFormatter.format(value)}</span>
         ) 
     }, 
     {
-        Header: "Deaths",
+        Header: "New Deaths",
         accessor: "todayDeaths",
-        Cell: ({row}) => (
-            <div>
-                <span className="d-block font-weight-bold deceased-text"> {row.original.todayDeaths > 0 && `+ ${numberFormatter.format(row.original.todayDeaths)}`}</span>
-                <span className="d-block">{numberFormatter.format(row.original.deaths)}</span>
-            </div>
+        Cell: ({value}) => (
+                <span className="d-block font-weight-bold deceased-text">{value > 0 && "+ "} {numberFormatter.format(value)}</span>
         ) 
+    },
+    {
+        Header: "Total Cases",
+        accessor: "cases",
+        Cell: ({value}) => numberFormatter.format(value)
+    },
+    {
+        Header: "Total Recovered",
+        accessor: "recovered",
+        Cell: ({value}) => numberFormatter.format(value)
+    },
+    {
+        Header: "Total Deaths",
+        accessor: "deaths",
+        Cell: ({value}) => numberFormatter.format(value)
     },
     {
         Header: 'Active Cases',
