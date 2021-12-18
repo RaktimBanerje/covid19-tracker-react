@@ -59,11 +59,11 @@ const Datagrid = ({columns:COLUMNS, data:DATA}) => {
                 <div class="row align-items-center">
                     <div class="input-group">
                         <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search..." value={globalFilter} onChange={e=>setGlobalFilter(e.target.value)} id="example-search-input" />
-                        <span class="input-group-append">
+                        {/* <span class="input-group-append">
                             <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill" type="button" style={{marginLeft: "-40px"}}>
                                 <i class="fa fa-search"></i>
                             </button>
-                        </span>
+                        </span> */}
                     </div>
                 </div>
                 {/* <Dropdown /> */}

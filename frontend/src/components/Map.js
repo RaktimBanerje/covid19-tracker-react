@@ -1,9 +1,24 @@
 import React from "react" 
 import { useState } from "react"
-import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet"
 import { numberFormatter } from "../services/util"
 import { caseTypeColor, caseTypeMultiplier } from "../services/constants/constants"
 import "leaflet/dist/leaflet.css"
+
+const MapContainer = React.lazy(
+    ()=>  import("react-leaflet").then(module => ({default: module.MapContainer}))
+)
+
+const TileLayer = React.lazy(
+    ()=>  import("react-leaflet").then(module => ({default: module.TileLayer}))
+)
+
+const Circle = React.lazy(
+    ()=>  import("react-leaflet").then(module => ({default: module.Circle}))
+)
+
+const Popup = React.lazy(
+    ()=>  import("react-leaflet").then(module => ({default: module.Popup}))
+)
 
 const Map = ({data}) => {
 
@@ -63,13 +78,15 @@ const Map = ({data}) => {
         <div className="card-body">
             <div className="pt-4 pb-2">
                 <div className="map">
-                    <MapContainer center={[20, 77]} zoom={4} scrollWheelZoom={false}>
-                        <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                         <ShowDataOnMap data={data} />
-                    </MapContainer>
+                    <React.Suspense fallback="Loading...">
+                        <MapContainer center={[20, 77]} zoom={4} scrollWheelZoom={false}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <ShowDataOnMap data={data} />
+                        </MapContainer>
+                    </React.Suspense>
                 </div>
             </div>
         </div>            

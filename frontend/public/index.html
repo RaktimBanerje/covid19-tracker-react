@@ -11,12 +11,6 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
-    <!-- Custom fonts for this template-->
-    <link href="%PUBLIC_URL%/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="%PUBLIC_URL%/css/sb-admin-2.min.css" rel="stylesheet">
     <!--
@@ -34,10 +28,71 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Covid19 Tracker</title>
+    <style type="text/css">
+      @keyframes ldio-hl4uqt6544s {
+        0% { opacity: 1 }
+        50% { opacity: .5 }
+        100% { opacity: 1 }
+      }
+      .ldio-hl4uqt6544s div {
+        position: absolute;
+        width: 20px;
+        height: 80px;
+        top: 60px;
+        animation: ldio-hl4uqt6544s 1s cubic-bezier(0.5,0,0.5,1) infinite;
+      }.ldio-hl4uqt6544s div:nth-child(1) {
+        transform: translate(30px,0);
+        background: #e15b64;
+        animation-delay: -0.6s;
+      }.ldio-hl4uqt6544s div:nth-child(2) {
+        transform: translate(70px,0);
+        background: #f47e60;
+        animation-delay: -0.4s;
+      }.ldio-hl4uqt6544s div:nth-child(3) {
+        transform: translate(110px,0);
+        background: #f8b26a;
+        animation-delay: -0.2s;
+      }.ldio-hl4uqt6544s div:nth-child(4) {
+        transform: translate(150px,0);
+        background: #abbd81;
+        animation-delay: -1s;
+      }
+      .loadingio-spinner-bars-eozaym1kqwt {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      .ldio-hl4uqt6544s {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: translateZ(0) scale(1);
+        backface-visibility: hidden;
+        transform-origin: 0 0; /* see note above */
+      }
+      .ldio-hl4uqt6544s div { box-sizing: content-box; }
+      .centered {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          /* bring your own prefixes */
+          transform: translate(-50%, -50%);
+        }
+      </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="centered">
+        <div class="loadingio-spinner-bars-eozaym1kqwt">
+          <div class="ldio-hl4uqt6544s">
+            <div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -48,14 +103,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <!-- Bootstrap core JavaScript-->
-    <!-- <script src="%PUBLIC_URL%/vendor/jquery/jquery.min.js"></script> -->
-    <!-- <script src="%PUBLIC_URL%/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-
-    <!-- Core plugin JavaScript-->
-    <!-- <script src="%PUBLIC_URL%/vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-    <!-- Custom scripts for all pages-->
-    <!-- <script src="%PUBLIC_URL%/js/sb-admin-2.min.js"></script>     -->
   </body>
 </html>
